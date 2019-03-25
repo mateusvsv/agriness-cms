@@ -1,8 +1,6 @@
-<div class="row">
-  <h2>Heading</h2>
-  <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-</div>
-<div class="row">
-  <h2>Heading</h2>
-  <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+<div *ngFor="let a of artigos" class="row">
+  <h2>{{ a.titulo }} </h2> <h6>{{ a.dataCriacao }}</h6>
+  <ul><li *ngFor="let categoria of a.categorias">{{ categoria.nome }}</li></ul>
+  <p>{{ a.conteudo }} </p>
+  <p><span>{{ a.autor.nome }} - {{ a.autor.email }}</span></p>
 </div>
