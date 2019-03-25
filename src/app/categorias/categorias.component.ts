@@ -23,4 +23,8 @@ export class CategoriasComponent implements OnInit {
     this.categoria.descricao = 'descricao';
   }
 
+  cancelarCadastro() {
+    this.categoria = new Categoria();
+  }
+
 }
