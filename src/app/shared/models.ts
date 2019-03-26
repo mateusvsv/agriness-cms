@@ -3,13 +3,14 @@ export class Artigo {
   titulo: string;
   conteudo: string;
   autor: Autor;
-  categorias: Array<Categoria>;
+  categoria: Array<Categoria>;
   dataCriacao: string;
   ultimaModificacao: string;
   publicado: boolean;
 
   constructor() {
     this.autor = new Autor();
+    this.categoria = [];
   }
 }
 

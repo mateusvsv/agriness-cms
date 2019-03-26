@@ -15,7 +15,7 @@ export class ArtigosComponent implements OnInit {
   artigos: Array<Artigo> = [];
 
   ngOnInit() {
-    this.artigos = this.service.getArtigos();
+    this.artigos = [];
   }
 
 }

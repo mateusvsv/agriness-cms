@@ -7,6 +7,7 @@ import { AppRoutingModule } from './app.routing.module';
 import { ArtigosModule } from './artigos/artigos.module';
 import { CategoriasModule } from './categorias/categorias.module';
 import { CategoriasService } from './categorias/categorias.service';
+import { ArtigosService } from './artigos/artigos.service';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,7 @@ import { CategoriasService } from './categorias/categorias.service';
     ArtigosModule,
     CategoriasModule
   ],
-  providers: [CategoriasService],
+  providers: [CategoriasService, ArtigosService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
