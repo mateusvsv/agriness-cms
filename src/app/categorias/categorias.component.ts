@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Categoria } from './../shared/models';
+import { CategoriasService } from './categorias.service';
 
 @Component({
   selector: 'app-categorias',
@@ -9,22 +10,22 @@ import { Categoria } from './../shared/models';
 })
 export class CategoriasComponent implements OnInit {
 
-  constructor() { }
+  constructor(private service: CategoriasService) { }
+
   categoria: Categoria = new Categoria();
   categorias = [];
 
   ngOnInit() {
-    let categoria1 = new Categoria();
-    categoria1.nome = 'Tecnologia';
-    let categoria2 = new Categoria();
-    categoria2.nome = 'Inovação';
-    this.categorias = [categoria1, categoria2];
-    this.categoria.nome = 'Nova';
-    this.categoria.descricao = 'descricao';
+    this.service.obterCategorias().subscribe(categorias => this.categorias = categorias);
   }
 
   cancelarCadastro() {
     this.categoria = new Categoria();
+  }
+
+  cadastrarCategoria(categoria) {
+    this.service.cadastrarCategoria(categoria)
+      .subscribe(cat => this.categorias.push(cat));
   }
 
 }

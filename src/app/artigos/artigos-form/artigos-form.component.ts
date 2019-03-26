@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Artigo, Categoria } from './../../shared/models';
+import { CategoriasService } from './../../categorias/categorias.service';
 
 @Component({
   selector: 'app-artigos-form',
@@ -12,16 +13,10 @@ export class ArtigosFormComponent implements OnInit {
   artigo = new Artigo();
   categorias = [];
 
-  constructor() { }
+  constructor(private categoriasService: CategoriasService) { }
 
   ngOnInit() {
-    let categoria1 = new Categoria();
-    categoria1.id = 1;
-    categoria1.nome = 'Tecnologia';
-    let categoria2 = new Categoria();
-    categoria2.id = 2;
-    categoria2.nome = 'Inovação';
-    this.categorias = [categoria1, categoria2];
+    this.categoriasService.obterCategorias().subscribe(categorias => this.categorias = categorias);
   }
 
 }
