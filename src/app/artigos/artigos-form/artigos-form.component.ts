@@ -24,11 +24,11 @@ export class ArtigosFormComponent implements OnInit {
 
   selecionarCategoria(event, categoria: Categoria) {
     if(event.target.checked){
-      this.artigo.categoria.push(categoria);
+      this.artigo.categorias.push(categoria);
     } else {
-      let index = this.artigo.categoria.indexOf(categoria, 0);
+      let index = this.artigo.categorias.indexOf(categoria, 0);
       if (index > -1) {
-        this.artigo.categoria.splice(index, 1);
+        this.artigo.categorias.splice(index, 1);
       }
     }
   }

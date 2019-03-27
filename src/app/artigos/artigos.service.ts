@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -7,14 +7,24 @@ import { Artigo } from './../shared/models';
 @Injectable()
 export class ArtigosService {
 
-  url = 'http://127.0.0.1:8000/artigos/';
+  urlLista = 'http://127.0.0.1:8000/artigos/';
+  urlCadastro = 'http://127.0.0.1:8000/artigo/';
 
   constructor(private http: HttpClient) { }
 
-  getArtigos() {
+  obterArtigos() {
+    return this.http.get(this.urlLista);
   }
 
   cadastrarArtigo(artigo: Artigo): Observable<Artigo> {
-    return this.http.post<Artigo>(this.url, artigo);
+    return this.http.post<Artigo>(this.urlCadastro, artigo);
   }
+
+  pesquisarArtigos(pesquisa) {
+    let url = this.urlLista + '?autor=' + pesquisa.autor;
+    url = url + '&categoria=' + pesquisa.categoria + '&conteudo=' + pesquisa.conteudo;
+    return this.http.get<Artigo[]>(url);
+  }
+
+
 }

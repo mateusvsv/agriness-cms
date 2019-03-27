@@ -3,14 +3,14 @@ export class Artigo {
   titulo: string;
   conteudo: string;
   autor: Autor;
-  categoria: Array<Categoria>;
+  categorias: Array<Categoria>;
   dataCriacao: string;
   ultimaModificacao: string;
   publicado: boolean;
 
   constructor() {
     this.autor = new Autor();
-    this.categoria = [];
+    this.categorias = [];
   }
 }
 
@@ -23,4 +23,16 @@ export class Categoria {
 export class Autor {
   nome: string;
   email: string;
+}
+
+export class Pesquisa {
+  autor: string;
+  categoria: string;
+  conteudo: string;
+
+  constructor() {
+    this.autor = '';
+    this.categoria = '';
+    this.conteudo = '';
+  }
 }
