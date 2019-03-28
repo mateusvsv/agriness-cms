@@ -1,0 +1,11 @@
+.titulo-artigo {
+  align-items: baseline;
+}
+
+.titulo-artigo h2{
+  margin-right: 5px;
+}
+
+.status-artigo button{
+  margin: 10px;
+}

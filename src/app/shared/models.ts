@@ -4,8 +4,8 @@ export class Artigo {
   conteudo: string;
   autor: Autor;
   categorias: Array<Categoria>;
-  dataCriacao: string;
-  ultimaModificacao: string;
+  data_criacao: string;
+  ultima_modificacao: string;
   publicado: boolean;
 
   constructor() {

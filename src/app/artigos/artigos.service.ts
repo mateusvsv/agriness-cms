@@ -16,6 +16,14 @@ export class ArtigosService {
     return this.http.get(this.urlLista);
   }
 
+  obterArtigo(id) {
+    return this.http.get<Artigo>(this.urlCadastro + id);
+  }
+
+  editar(artigo: Artigo) {
+    return this.http.put<Artigo>(this.urlCadastro + artigo.id, artigo);
+  }
+
   cadastrarArtigo(artigo: Artigo): Observable<Artigo> {
     return this.http.post<Artigo>(this.urlCadastro, artigo);
   }

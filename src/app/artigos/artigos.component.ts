@@ -21,7 +21,7 @@ export class ArtigosComponent implements OnInit {
   paginador = {
     totalItens: 0,
     totalPaginas: [1],
-    itensPagina: 2,
+    itensPagina: 3,
     proxima: undefined,
     anterior: undefined
   };
@@ -36,7 +36,7 @@ export class ArtigosComponent implements OnInit {
 
   montarPaginador(response) {
     this.paginador.totalItens = response.count;
-    let totalPaginas = Math.round(this.paginador.totalItens/this.paginador.itensPagina);
+    const totalPaginas = Math.round(this.paginador.totalItens/this.paginador.itensPagina);
     if (totalPaginas) {
       this.paginador.totalPaginas = Array(totalPaginas).fill(totalPaginas).map((x, i) => i);
     }

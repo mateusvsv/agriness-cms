@@ -1,0 +1,18 @@
+<div class="row titulo-artigo">
+  <h2>{{ artigo.titulo }}</h2> <small class="text-muted">{{ artigo.data_criacao }}</small>
+</div>
+<p><span>{{ artigo.autor.nome }} - {{ artigo.autor.email }}</span></p>
+<div class="row">
+  <ul class="list-inline" ><li class="list-inline-item" *ngFor="let categoria of artigo.categorias">
+    <span class="badge badge-light">{{ categoria.nome }}</span></li></ul>
+</div>
+<div class="conteudo-artigo" [innerHTML]="artigo.conteudo"></div>
+<div class="row status-artigo">
+  <div *ngIf="artigo.publicado">
+    <span>Data publicação: {{ artigo.ultima_modificacao }}</span>
+  </div>
+  <div *ngIf="!artigo.publicado">
+    <span>Este artigo é um racunho.</span>
+    <button type="button" (click)="publicar()" class="btn btn-primary">Publicar!</button>
+  </div>
+</div>

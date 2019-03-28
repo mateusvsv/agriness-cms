@@ -1,34 +1,37 @@
 <div class="artigos-busca">
   <form #buscaForm="ngForm">
-    <div class="form-row">
+    <div class="form-row pesquisa-artigos">
       <div class="form-group col-md-3">
         <label for="nome">Nome do autor</label>
         <input type="text" class="form-control" id="nome" [(ngModel)]="pesquisa.autor" name="autor">
       </div>
       <div class="form-group col-md-3">
-        <label for="descricao">Categoria</label>
-        <select (change)="selecionaCategoria($event)" name="categoria">
+        <label for="categoria">Categoria</label>
+        <select class="custom-select" (change)="selecionaCategoria($event)" name="categoria" id="categoria" >
           <option value=""> --- </option>
           <option [value]="categoria.id" *ngFor="let categoria of categorias"> {{categoria.nome}}</option>
         </select>
       </div>
       <div class="form-group col-md-4">
         <label for="nome">Título ou Conteúdo</label>
-        <input type="text" class="form-control" id="conteudo" [(ngModel)]="pesquisa.conteudo" name="conteudo">
+        <input type="text" disabled class="form-control" id="conteudo" [(ngModel)]="pesquisa.conteudo" name="conteudo">
       </div>
       <div class="form-group col-md-1">
-        <button (click)="obter_artigos()" class="btn btn-primary">Buscar</button>
+        <button (click)="obter_artigos(1)" class="btn btn-primary">Buscar</button>
       </div>
     </div>
   </form>
 </div>
 <div class="artigos-timeline">
-  <div *ngFor="let a of artigos" class="row">
-    <h2>{{ a.titulo }} </h2> <h6>{{ a.dataCriacao }}</h6>
-    <ul><li *ngFor="let categoria of a.categorias">{{ categoria.nome }}</li></ul>
-    <div [innerHTML]="a.conteudo"></div>
-    <p><span>{{ a.autor.nome }} - {{ a.autor.email }}</span></p>
-  </div>
+  <div class="row">
+    <div *ngFor="let a of artigos" class="col-md-4">
+      <div class="row titulo-artigo"><h2><a routerLink="/artigo/{{a.id}}">{{ a.titulo }}</a></h2> <small class="text-muted">{{ a.data_criacao }}</small></div>
+      <ul class="list-inline" ><li class="list-inline-item" *ngFor="let categoria of a.categorias">
+          <span class="badge badge-light">{{ categoria.nome }}</span></li></ul>
+      <div class="conteudo-artigo" [innerHTML]="a.conteudo"></div>
+      <p><span>{{ a.autor.nome }} - {{ a.autor.email }}</span></p>
+      <p><a class="btn btn-secondary" routerLink="/artigo/{{a.id}}">Leia mais &raquo;</a></p>
+    </div>
 </div>
 <div class="artigos-paginacao">
   <nav aria-label="Page navigation example">

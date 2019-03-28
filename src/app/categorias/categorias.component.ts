@@ -28,14 +28,14 @@ export class CategoriasComponent implements OnInit {
   }
 
   atualizar() {
-    this.service.cadastrarCategoria(this.categoria).subscribe(categoria => {
+    this.service.editarCategoria(this.categoria).subscribe(categoria => {
       this.atualizarGridCategoria(categoria);
       this.cancelarCadastro();
     });
   }
 
   atualizarGridCategoria(categoria) {
-    let index = this.categorias.findIndex(c => c.id === categoria.id);
+    const index = this.categorias.findIndex(c => c.id === categoria.id);
     this.categorias[index] = categoria;
   }
 
