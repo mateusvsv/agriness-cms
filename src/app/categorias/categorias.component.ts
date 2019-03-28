@@ -23,9 +23,32 @@ export class CategoriasComponent implements OnInit {
     this.categoria = new Categoria();
   }
 
-  cadastrarCategoria(categoria) {
-    this.service.cadastrarCategoria(categoria)
-      .subscribe(cat => this.categorias.push(cat));
+  editar(categoria) {
+    this.categoria = categoria;
+  }
+
+  atualizar() {
+    this.service.cadastrarCategoria(this.categoria).subscribe(categoria => {
+      this.atualizarGridCategoria(categoria);
+      this.cancelarCadastro();
+    });
+  }
+
+  atualizarGridCategoria(categoria) {
+    let index = this.categorias.findIndex(c => c.id === categoria.id);
+    this.categorias[index] = categoria;
+  }
+
+  cadastrarCategoria() {
+    if (this.categoria.id) {
+      this.atualizar();
+    } else {
+      this.service.cadastrarCategoria(this.categoria)
+        .subscribe(categoria => {
+          this.categorias.push(categoria);
+          this.cancelarCadastro();
+        });
+    }
   }
 
 }

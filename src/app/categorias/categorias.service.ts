@@ -10,16 +10,21 @@ import { Categoria } from './../shared/models';
 })
 export class CategoriasService {
 
-  url = 'http://127.0.0.1:8000/categorias/';
+  urlListaCadastro = 'http://127.0.0.1:8000/categorias/';
+  urlEdicao = 'http://127.0.0.1:8000/categoria/';
 
   constructor(private http: HttpClient) { }
 
   obterCategorias() {
-    return this.http.get<Categoria[]>(this.url);
+    return this.http.get<Categoria[]>(this.urlListaCadastro);
   }
 
   cadastrarCategoria(categoria: Categoria): Observable<Categoria> {
-    return this.http.post<Categoria>(this.url, categoria);
+    return this.http.post<Categoria>(this.urlListaCadastro, categoria);
+  }
+
+  editarCategoria(categoria: Categoria): Observable<Categoria> {
+    return this.http.put<Categoria>(this.urlEdicao, categoria);
   }
 
 }

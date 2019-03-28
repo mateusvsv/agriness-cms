@@ -2,7 +2,7 @@
 <h2>Categorias</h2>
 
 <form #categoriaForm="ngForm">
-  <div class="form-row">
+  <div class="form-row form-categoria">
     <div class="form-group col-md-5">
       <label for="nome">Nome</label>
       <input type="text" class="form-control" id="nome" [(ngModel)]="categoria.nome" name="nome">
@@ -32,7 +32,7 @@
     <tr *ngFor="let c of categorias">
       <td>{{ c.nome }}</td>
       <td>{{ c.descricao }}</td>
-      <td> AÇÕES </td>
+      <td> <button type="button" (click)="editar(c)" class="btn btn-link">Editar</button></td>
     </tr>
   </tbody>
 </table>
