@@ -17,7 +17,7 @@
         <input type="text" class="form-control" id="conteudo" [(ngModel)]="pesquisa.conteudo" name="conteudo">
       </div>
       <div class="form-group col-md-1">
-        <button (click)="pesquisar(pesquisa)" class="btn btn-primary">Buscar</button>
+        <button (click)="obter_artigos()" class="btn btn-primary">Buscar</button>
       </div>
     </div>
   </form>
@@ -33,16 +33,16 @@
 <div class="artigos-paginacao">
   <nav aria-label="Page navigation example">
     <ul class="pagination justify-content-center">
-      <li class="page-item">
-        <a class="page-link" href="#" aria-label="Previous">
+      <li class="page-item" [class.disabled]="!paginador.anterior">
+        <a class="page-link" (click)="obter_artigos(paginador.anterior)" href="#" aria-label="Anterior">
           <span aria-hidden="true">&laquo;</span>
         </a>
       </li>
       <li *ngFor="let pagina of paginador.totalPaginas; let i = index" class="page-item">
-        <a class="page-link" href="#">{{i+1}}</a>
+        <a class="page-link" (click)="obter_artigos(i+1)"  href="#">{{i+1}}</a>
       </li>
-      <li class="page-item">
-        <a class="page-link" href="#" aria-label="Next">
+      <li class="page-item" [class.disabled]="!paginador.proxima">
+        <a class="page-link" (click)="obter_artigos(paginador.proxima)" href="#" aria-label="Proxima">
           <span aria-hidden="true">&raquo;</span>
         </a>
       </li>

@@ -20,9 +20,9 @@ export class ArtigosService {
     return this.http.post<Artigo>(this.urlCadastro, artigo);
   }
 
-  pesquisarArtigos(pesquisa) {
+  pesquisarArtigos(pesquisa, pagina) {
     let url = this.urlLista + '?autor=' + pesquisa.autor;
-    url = url + '&categoria=' + pesquisa.categoria + '&conteudo=' + pesquisa.conteudo;
+    url = url + '&categoria=' + pesquisa.categoria + '&conteudo=' + pesquisa.conteudo + '&page=' + pagina;
     return this.http.get<Artigo[]>(url);
   }
 

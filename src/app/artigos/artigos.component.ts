@@ -22,13 +22,9 @@ export class ArtigosComponent implements OnInit {
     totalItens: 0,
     totalPaginas: [1],
     itensPagina: 2,
-    proximaPagina: undefined,
-    voltarPagina: undefined
-  }
-
-  pesquisar(busca) {
-    this.service.pesquisarArtigos(busca).subscribe(artigos => this.artigos = artigos);
-  }
+    proxima: undefined,
+    anterior: undefined
+  };
 
   limparBusca() {
     this.pesquisa = new Pesquisa();
@@ -44,14 +40,27 @@ export class ArtigosComponent implements OnInit {
     if (totalPaginas) {
       this.paginador.totalPaginas = Array(totalPaginas).fill(totalPaginas).map((x, i) => i);
     }
+    if (response.next != null) {
+      this.paginador.proxima = response.next.split('page=')[1];
+    }
+    if (response.previous != null) {
+      let pagina = response.previous.split('page=')[1];
+      this.paginador.anterior = pagina ? pagina : 1;
+    }
   }
 
-  ngOnInit() {
-    this.categoriaService.obterCategorias().subscribe(categorias => this.categorias = categorias);
-    this.service.obterArtigos().subscribe(response => {
+  obter_artigos(pagina){
+    this.service.pesquisarArtigos(this.pesquisa, pagina).subscribe(response => {
       this.artigos = response['results'];
       this.montarPaginador(response);
     });
   }
+
+  ngOnInit() {
+    this.obter_artigos(1);
+    this.categoriaService.obterCategorias().subscribe(categorias => this.categorias = categorias);
+  }
+
+
 
 }
