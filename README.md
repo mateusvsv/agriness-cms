@@ -1,27 +1,47 @@
 # AgrinessCms
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.6.
+Aplicação desenvolvida em Angular para um simples gerenciador de conteúdo onde será possível cadastrar incríveis textos para leitura futura.
 
-## Development server
+Este é o projeto de front-end do Agriness - CMS. Para a execução deste projeto é necessário antes a execução da API que se encontra no projeto https://github.com/mateusvsv/agriness-api.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Requisitos
 
-## Code scaffolding
+Para executar o projeto é necessário ter o Node.js nas versões 8.x ou 10.x.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Preparando o Projeto
 
-## Build
+Com o Node.js, juntamente com o npm, devidamente instalado nas versões citadas, podemos baixar e configurar o projeto.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Clonando o repositório:
+```
+git clone git@github.com:mateusvsv/agriness-cms.git
+```
+Entrando no diretório do projeto:
+```
+cd agriness-cms/
+```
+Instalando as dependências do projeto:
+```
+npm install
+```
 
-## Running unit tests
+## Executando
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Uma vez configurado o projeto pode ser executado com o seguinte comando e estará disponível no endereço **localhost:4200**.
+```
+ng serve
+```
 
-## Running end-to-end tests
+Vale lembrar que para utilização correta deste projeto é necessário se certificar que a API https://github.com/mateusvsv/agriness-api esteja rodando.
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
-## Further help
+### Dicas de utilização
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+Para cadastrar um artigo é necessário ter pelo menos uma categoria cadastrada.
+O cadastro de categorias pode ser feito no menu "Categorias" na barra de navegação.
+
+A página inicial irá lhe apresentar trechos dos 3 últimos artigos cadastrados. Para acessar as informações mais detalhadas do artigo basta clicar no seu título.
+
+Artigos podem ser buscados por autor e categoria. A busca por conteúdo ou título infelizmente está desabilidata. :(
+
+
