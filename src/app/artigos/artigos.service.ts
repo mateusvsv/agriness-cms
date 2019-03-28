@@ -17,11 +17,11 @@ export class ArtigosService {
   }
 
   obterArtigo(id) {
-    return this.http.get<Artigo>(this.urlCadastro + id);
+    return this.http.get<Artigo>(this.urlCadastro + id + '/' );
   }
 
   editar(artigo: Artigo) {
-    return this.http.put<Artigo>(this.urlCadastro + artigo.id, artigo);
+    return this.http.put<Artigo>(this.urlCadastro + artigo.id, artigo + '/');
   }
 
   cadastrarArtigo(artigo: Artigo): Observable<Artigo> {

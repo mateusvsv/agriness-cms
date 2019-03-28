@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Artigo, Categoria } from './../../shared/models';
 import { CategoriasService } from './../../categorias/categorias.service';
 import { ArtigosService } from './../artigos.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-artigos-form',
@@ -16,7 +17,8 @@ export class ArtigosFormComponent implements OnInit {
 
   constructor(
     private categoriasService: CategoriasService,
-    private artigosService: ArtigosService) { }
+    private artigosService: ArtigosService,
+    private router: Router) { }
 
   ngOnInit() {
     this.categoriasService.obterCategorias().subscribe(categorias => this.categorias = categorias);
@@ -35,7 +37,11 @@ export class ArtigosFormComponent implements OnInit {
 
   cadastrarArtigo(artigo) {
     this.artigosService.cadastrarArtigo(artigo)
-      .subscribe(novo => this.artigo = novo);
+      .subscribe(novo => {
+        this.artigo = new Artigo();
+        alert("Artigo cadastrado com sucesso.");
+        this.router.navigate([''])
+      });
   }
 
 }

@@ -31,6 +31,7 @@ export class CategoriasComponent implements OnInit {
     this.service.editarCategoria(this.categoria).subscribe(categoria => {
       this.atualizarGridCategoria(categoria);
       this.cancelarCadastro();
+      alert('Categoria atualizada com sucesso!');
     });
   }
 
@@ -47,6 +48,7 @@ export class CategoriasComponent implements OnInit {
         .subscribe(categoria => {
           this.categorias.push(categoria);
           this.cancelarCadastro();
+          alert('Categoria cadastrada com sucesso!');
         });
     }
   }

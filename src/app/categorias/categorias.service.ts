@@ -24,7 +24,7 @@ export class CategoriasService {
   }
 
   editarCategoria(categoria: Categoria): Observable<Categoria> {
-    return this.http.put<Categoria>(this.urlEdicao + categoria.id, categoria);
+    return this.http.put<Categoria>(this.urlEdicao + categoria.id + '/', categoria);
   }
 
 }
