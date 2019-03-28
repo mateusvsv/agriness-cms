@@ -44,4 +44,9 @@ A página inicial irá lhe apresentar trechos dos 3 últimos artigos cadastrados
 
 Artigos podem ser buscados por autor e categoria. A busca por conteúdo ou título infelizmente está desabilidata. :(
 
+### Implementações Futuras
 
+- Busca por termos do artigo.
+- Validações e mensagens ao usuário.
+- Edição completa de artigos.
+- Testes unitários.
